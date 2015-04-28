@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>(vector3d) MircoT</title>
+    <description>This is my blog, where I will put my experiments and results about how I found a way to solve a problem, hoping to be useful to someone.
+</description>
+    <link>http://mircot.github.io/</link>
+    <atom:link href="http://mircot.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Wed, 29 Apr 2015 00:05:44 +0200</pubDate>
+    <lastBuildDate>Wed, 29 Apr 2015 00:05:44 +0200</lastBuildDate>
+    <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>(0, 0, 0) Hello World!</title>
+        <description>&lt;p&gt;This is the start point!&lt;/p&gt;
+
+&lt;p&gt;I don’t have something particular to write about, there are a lot of things that waiting to be completed… one step at a time.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 28 Apr 2015 18:44:25 +0200</pubDate>
+        <link>http://mircot.github.io/jekyll/update/2015/04/28/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">http://mircot.github.io/jekyll/update/2015/04/28/welcome-to-jekyll.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
+    
+  </channel>
+</rss>

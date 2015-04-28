@@ -1,0 +1,15 @@
+# Site settings
+title: (vector3d) MircoT
+description: > # MircoT blog
+  This is my blog, where I will put my experiments and results
+  about how I found a way to solve a problem, hoping to be useful to someone.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://mircot.github.io" # the base hostname & protocol for your site
+github_username:  MircoT
+
+# Build settings
+markdown: kramdown
+highlighter: pygments
+safe: true
+lsi: false
+source: .
