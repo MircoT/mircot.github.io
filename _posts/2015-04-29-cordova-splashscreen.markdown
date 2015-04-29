@@ -16,5 +16,5 @@ following preference:
 <preference name="SplashScreen" value="screen" />
 {% endhighlight %}
 
-This have to be checked immediatly, specially if you are working in a project
-made from someone else.
+This have to be checked immediately, especially if you are working in a 
+project made from someone else.
