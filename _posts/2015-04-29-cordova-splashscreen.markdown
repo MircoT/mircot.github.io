@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "(cordova, splashscreen, 0) Splash screen doesn't shown..."
+title:  "(cordova, splashscreen, 0) Splash screen doesn't show..."
 date:   2015-04-29 10:05:49
 categories: blog programming cordova
 ---
