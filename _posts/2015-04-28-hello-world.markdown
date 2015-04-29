@@ -2,7 +2,7 @@
 layout: post
 title:  "(0, 0, 0) Hello World!"
 date:   2015-04-28 16:44:25
-categories: jekyll update
+categories: blog update
 ---
 This is the start point!
 

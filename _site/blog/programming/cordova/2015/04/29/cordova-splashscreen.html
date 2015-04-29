@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>(vector3d) MircoT</title>
+    <title>(cordova, splashscreen, 0) Splash screen doesn't shown...</title>
     <meta name="description" content="This is my blog, where I will put my experiments and results about how I found a way to solve a problem, hoping to be useful to someone.
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://mircot.github.io/">
+    <link rel="canonical" href="http://mircot.github.io/blog/programming/cordova/2015/04/29/cordova-splashscreen.html">
 </head>
 
 
@@ -54,31 +54,28 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <div class="post">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title">(cordova, splashscreen, 0) Splash screen doesn't shown...</h1>
+    <p class="post-meta">Apr 29, 2015</p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Apr 29, 2015</span>
+  <article class="post-content">
+    <p>Sometimes I had some problems to show the splash screen on some cordova projects.</p>
 
-        <h2>
-          <a class="post-link" href="/blog/programming/cordova/2015/04/29/cordova-splashscreen.html">(cordova, splashscreen, 0) Splash screen doesn't shown...</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 28, 2015</span>
+<p>Most of the times the images were linked properly in the <strong>config.xml</strong> file
+and the plugin was correctly added and compiled,
+so the problem was in another part and after several attempts and online 
+searches I realized that the mistake was to not have written the
+following preference:</p>
 
-        <h2>
-          <a class="post-link" href="/blog/update/2015/04/28/hello-world.html">(0, 0, 0) Hello World!</a>
-        </h2>
-      </li>
-    
-  </ul>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;preference</span> <span class="na">name=</span><span class="s">&quot;SplashScreen&quot;</span> <span class="na">value=</span><span class="s">&quot;screen&quot;</span> <span class="nt">/&gt;</span></code></pre></div>
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+<p>This have to be checked immediatly, specially if you are working in a project
+made from someone else.</p>
+
+  </article>
 
 </div>
 
