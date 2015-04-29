@@ -6,8 +6,8 @@
 </description>
     <link>http://mircot.github.io/</link>
     <atom:link href="http://mircot.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 29 Apr 2015 10:35:34 +0200</pubDate>
-    <lastBuildDate>Wed, 29 Apr 2015 10:35:34 +0200</lastBuildDate>
+    <pubDate>Wed, 29 Apr 2015 10:39:18 +0200</pubDate>
+    <lastBuildDate>Wed, 29 Apr 2015 10:39:18 +0200</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -22,8 +22,8 @@ following preference:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;preference&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;SplashScreen&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;screen&amp;quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;This have to be checked immediately, especially if you are working in a 
-project made from someone else.&lt;/p&gt;
+&lt;p&gt;This has to be checked immediately, especially if you are working in a 
+project made by someone else.&lt;/p&gt;
 </description>
         <pubDate>Wed, 29 Apr 2015 12:05:49 +0200</pubDate>
         <link>http://mircot.github.io/blog/programming/cordova/2015/04/29/cordova-splashscreen.html</link>
