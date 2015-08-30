@@ -6,9 +6,32 @@
 </description>
     <link>http://mircot.github.io/</link>
     <atom:link href="http://mircot.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 29 Apr 2015 10:39:45 +0200</pubDate>
-    <lastBuildDate>Wed, 29 Apr 2015 10:39:45 +0200</lastBuildDate>
+    <pubDate>Mon, 31 Aug 2015 00:44:18 +0200</pubDate>
+    <lastBuildDate>Mon, 31 Aug 2015 00:44:18 +0200</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>(VS Code, error, TS5023) Unknown compiler option &#39;p&#39; ???</title>
+        <description>&lt;p&gt;I was trying &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;VS Code&lt;/a&gt; on windows, setting up a project with &lt;em&gt;TypeScript&lt;/em&gt; when I received this error:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;error TS5023: Unknown compiler option &lt;span class=&quot;s1&quot;&gt;&amp;#39;p&amp;#39;&lt;/span&gt;.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This was a big surprise because the parameter is also present in the &lt;a href=&quot;https://github.com/Microsoft/TypeScript/wiki/tsconfig.json&quot;&gt;documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;After some attempts I figured out that &lt;em&gt;VS Code&lt;/em&gt; was using a different executable for &lt;em&gt;TypeScript&lt;/em&gt;, that was installed with &lt;strong&gt;Microsoft SDKs&lt;/strong&gt; (and obviuosly was an older version… &lt;strong&gt;1.0.3&lt;/strong&gt; instead of &lt;strong&gt;1.5.3&lt;/strong&gt; on &lt;strong&gt;npm&lt;/strong&gt;). So I had to remove that &lt;strong&gt;tsc&lt;/strong&gt; &lt;em&gt;environment&lt;/em&gt; from the &lt;strong&gt;System PATH&lt;/strong&gt; to work with the correct version installed by &lt;strong&gt;npm&lt;/strong&gt;, as they suggest on the &lt;a href=&quot;http://www.typescriptlang.org/#Download&quot;&gt;official web page&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 31 Aug 2015 02:27:00 +0200</pubDate>
+        <link>http://mircot.github.io/blog/programming/vscode/2015/08/31/vscode-error-ts5023.html</link>
+        <guid isPermaLink="true">http://mircot.github.io/blog/programming/vscode/2015/08/31/vscode-error-ts5023.html</guid>
+        
+        
+        <category>blog</category>
+        
+        <category>programming</category>
+        
+        <category>vscode</category>
+        
+      </item>
     
       <item>
         <title>(cordova, splashscreen, 0) Splash screen doesn&#39;t show...</title>
