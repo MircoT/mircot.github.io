@@ -1,23 +1,40 @@
 (function()
 {
-  Cardioid = function(canvas, pos_x, pos_y, mirror, iterations, initialRotation, fun, radius, pieces, deltaTime)
+  Cardioid = function(canvas, kwargs)
   {
     'use strict';
-
+    
     // Private
-    var properties =
-    {
-      center_x: pos_x,
-      center_y: pos_y,
-      step: 360 / pieces,
-      radius: radius,
-      pieces: pieces,
-      deltaTime: deltaTime,
-      initialRotation: initialRotation,
-      fun: fun,
-      mirror: mirror,
-      numIterations: iterations
-    };
+    var properties = {};
+
+    if(kwargs !== undefined)
+      properties = {
+        center_x: kwargs.pos_x || canvas.width / 2,
+        center_y: kwargs.pos_y || canvas.height / 2,
+        step: 360 / kwargs.pieces || 360 / 64,
+        radius: kwargs.radius || 200,
+        pieces: kwargs.pieces || 64,
+        deltaTime: kwargs.deltaTime || 32,
+        initialRotation: kwargs.initialRotation || 90,
+        fun1: kwargs.fun1 || 2,
+        fun2: kwargs.fun2 || 1,
+        mirror: kwargs.mirror || true,
+        numIterations: kwargs.iterations || 32
+      };
+    else
+      properties = {
+        center_x: canvas.width / 2,
+        center_y: canvas.height / 2,
+        step: 360 / 64,
+        radius: 200,
+        pieces: 64,
+        deltaTime: 32,
+        initialRotation: 90,
+        fun1: 2,
+        fun2: 1,
+        mirror: true,
+        numIterations: 32
+      };
     
     function hsv2rgb(hsv)
     {
@@ -132,8 +149,8 @@
       {
         for(var curStep = 0; curStep < properties.numIterations; ++curStep)
         {
-          start = points[_mod((curStep * properties.fun), properties.pieces)];
-          end = points[_mod(((curStep + properties.pieces / 2)), properties.pieces)];
+          start = points[_mod((curStep * properties.fun1), properties.pieces)];
+          end = points[_mod(((curStep * properties.fun2 + properties.pieces / 2)), properties.pieces)];
           
           ctx.beginPath();
           ctx.strokeStyle = hsv2rgb({hue: curStep % 360, sat: 1, val: 1});
@@ -146,8 +163,8 @@
           
           if (properties.mirror === true)
           {
-            start = points[_mod((-curStep * properties.fun), properties.pieces)];
-            end = points[_mod(((-curStep - properties.pieces / 2)), properties.pieces)];
+            start = points[_mod((-curStep * properties.fun1), properties.pieces)];
+            end = points[_mod(((-curStep * properties.fun2 - properties.pieces / 2)), properties.pieces)];
             ctx.moveTo(start.x, start.y);
             ctx.lineTo(end.x, end.y);
             ctx.stroke();
@@ -156,8 +173,8 @@
       }
       else
       {
-        start = points[(drawStep * properties.fun) % properties.pieces];
-        end = points[((drawStep + properties.pieces / 2)) % properties.pieces];
+        start = points[(drawStep * properties.fun1) % properties.pieces];
+        end = points[((drawStep * properties.fun2 + properties.pieces / 2)) % properties.pieces];
         
         ctx.beginPath();
         ctx.strokeStyle = hsv2rgb({hue: drawStep % 360, sat: 1, val: 1});
@@ -170,8 +187,8 @@
         
         if (properties.mirror === true)
         {
-          start = points[_mod((-drawStep * properties.fun), properties.pieces)];
-          end = points[_mod(((-drawStep - properties.pieces / 2)), properties.pieces)];
+          start = points[_mod((-drawStep * properties.fun1), properties.pieces)];
+          end = points[_mod(((-drawStep * properties.fun2 - properties.pieces / 2)), properties.pieces)];
           ctx.moveTo(start.x, start.y);
           ctx.lineTo(end.x, end.y);
           ctx.stroke();
@@ -248,15 +265,6 @@
         if(newDeltaTime !== properties.deltaTime)
         {
           properties.deltaTime = newDeltaTime;
-          _clear();
-        }
-      },
-      changeFunStep: function(newStep)
-      {
-        if(newStep !== properties.fun)
-        {
-          properties.fun = newStep;
-          _clear();
         }
       },
       changeNumInterations: function(newNumInterations)
@@ -270,6 +278,20 @@
       setMirror: function(newState)
       {
         properties.mirror = newState;
+      },
+      changeFun: function(obj)
+      {
+        var dirty = false;
+        if(obj.fun1 !== undefined && obj.fun1 !== properties.fun1) {
+          properties.fun1 = obj.fun1;
+          dirty = true;
+        }
+        else if(obj.fun2 !== undefined && obj.fun2 !== properties.fun2) {
+          properties.fun2 = obj.fun2;
+          dirty = true;
+        }
+        
+        if(dirty === true) _clear();
       }
     };
     

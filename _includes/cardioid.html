@@ -26,9 +26,14 @@
       <div class="col-md-1"><span id="numPointsLabel" class="label label-primary">64</span></div>
     </div>
     <div class="row">
-      <div class="col-md-2 col-md-offset-2"><label style="margin-right: 8px;">Function step</label></div>
-      <div class="col-md-4"><input id="funNumSlider" type="text" data-slider-min="2" data-slider-max="16" data-slider-step="1" data-slider-value="2" data-slider-tooltip="hide" /></div>
-      <div class="col-md-1"><span id="funNumLabel" class="label label-primary">2</span></div>
+      <div class="col-md-2 col-md-offset-2"><label style="margin-right: 8px;">Function step 1</label></div>
+      <div class="col-md-4"><input id="fun1NumSlider" type="text" data-slider-min="1" data-slider-max="32" data-slider-step="1" data-slider-value="2" data-slider-tooltip="hide" /></div>
+      <div class="col-md-1"><span id="fun1NumLabel" class="label label-primary">2</span></div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-md-offset-2"><label style="margin-right: 8px;">Function step 2</label></div>
+      <div class="col-md-4"><input id="fun2NumSlider" type="text" data-slider-min="1" data-slider-max="32" data-slider-step="1" data-slider-value="1" data-slider-tooltip="hide" /></div>
+      <div class="col-md-1"><span id="fun2NumLabel" class="label label-primary">1</span></div>
     </div>
     <div class="row">
       <div class="col-md-2 col-md-offset-2"><label style="margin-right: 8px;">Number of iterations</label></div>
@@ -68,7 +73,18 @@
   'use strict';
   var canvas = document.getElementById("myCanvas");
   var rotationDelta = 90;
-  var cardioid = new Cardioid(canvas, canvas.width / 2, canvas.height / 2, true, 180, rotationDelta, 2, 200, 64, 32);
+  var cardioid = new Cardioid(canvas, {
+    pos_x: canvas.width / 2,
+    pos_y: canvas.height / 2,
+    mirror: true,
+    iterations: 180,
+    initialRotation: rotationDelta,
+    fun1: 2,
+    fun2: 1,
+    radius: 200,
+    pieces: 64,
+    deltaTime: 32
+  });
 
   cardioid.draw(
     {
@@ -97,9 +113,14 @@
     $("#deltaTimeLabel").text(slideEvt.value.toString());
   });
   
-  $("#funNumSlider").slider().on("slide", function(slideEvt) {
-	cardioid.changeFunStep(slideEvt.value);
-    $("#funNumLabel").text(slideEvt.value.toString());
+  $("#fun1NumSlider").slider().on("slide", function(slideEvt) {
+	cardioid.changeFun({ fun1: slideEvt.value });
+    $("#fun1NumLabel").text(slideEvt.value.toString());
+  });
+  
+  $("#fun2NumSlider").slider().on("slide", function(slideEvt) {
+	cardioid.changeFun({ fun2: slideEvt.value });
+    $("#fun2NumLabel").text(slideEvt.value.toString());
   });
   
   $("#numIterationsSlider").slider().on("slide", function(slideEvt) {
