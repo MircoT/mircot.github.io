@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "(cardioid, javascript, canvas) A cardioid from light refraction..."
+title:  "(cardioid, javascript, canvas) A cardioid from light reflection..."
 date:   2015-10-16 09:46:00
 categories: blog programming javascript
 ---
-This is a small experiment using *HTML5* canvas and *javascript*. The module created allows you to plot a [cardioid](https://en.wikipedia.org/wiki/Cardioid) on a canvas starting from the refraction of a ray of light in a circumference.
+This is a small experiment using *HTML5* canvas and *javascript*. The module created allows you to plot a [cardioid](https://en.wikipedia.org/wiki/Cardioid) on a canvas starting from the reflection of a ray of light in a circumference.
 
 The **cardioid** object has a lot of properties and below the canvas you can find some sliders to play with them.
 
@@ -89,10 +89,7 @@ Here you can see the source code for the cardioid module:
       }).join('');
     }
     
-    function _mod(x, y)
-    {
-      return ((x % y) + y) % y;
-    }
+    Number.prototype.mod = function(base) { return ((this % base) + base) % base; }
     
     function _genPoints() 
     {
@@ -166,8 +163,8 @@ Here you can see the source code for the cardioid module:
       {
         for(var curStep = 0; curStep < properties.numIterations; ++curStep)
         {
-          start = points[_mod((curStep * properties.fun1), properties.pieces)];
-          end = points[_mod(((curStep * properties.fun2 + properties.pieces / 2)), properties.pieces)];
+          start = points[(curStep * properties.fun1).mod(properties.pieces)];
+          end = points[((curStep * properties.fun2 + properties.pieces / 2)).mod(properties.pieces)];
           
           ctx.beginPath();
           ctx.strokeStyle = hsv2rgb({hue: curStep % 360, sat: 1, val: 1});
@@ -180,8 +177,8 @@ Here you can see the source code for the cardioid module:
           
           if (properties.mirror === true)
           {
-            start = points[_mod((-curStep * properties.fun1), properties.pieces)];
-            end = points[_mod(((-curStep * properties.fun2 - properties.pieces / 2)), properties.pieces)];
+            start = points[(-curStep * properties.fun1).mod(properties.pieces)];
+            end = points[((-curStep * properties.fun2 - properties.pieces / 2)).mod(properties.pieces)];
             ctx.moveTo(start.x, start.y);
             ctx.lineTo(end.x, end.y);
             ctx.stroke();
@@ -204,8 +201,8 @@ Here you can see the source code for the cardioid module:
         
         if (properties.mirror === true)
         {
-          start = points[_mod((-drawStep * properties.fun1), properties.pieces)];
-          end = points[_mod(((-drawStep * properties.fun2 - properties.pieces / 2)), properties.pieces)];
+          start = points[(-drawStep * properties.fun1).mod(properties.pieces)];
+          end = points[((-drawStep * properties.fun2 - properties.pieces / 2)).mod(properties.pieces)];
           ctx.moveTo(start.x, start.y);
           ctx.lineTo(end.x, end.y);
           ctx.stroke();

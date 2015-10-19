@@ -72,10 +72,7 @@
       }).join('');
     }
     
-    function _mod(x, y)
-    {
-      return ((x % y) + y) % y;
-    }
+    Number.prototype.mod = function(base) { return ((this % base) + base) % base; }
     
     function _genPoints() 
     {
@@ -149,8 +146,8 @@
       {
         for(var curStep = 0; curStep < properties.numIterations; ++curStep)
         {
-          start = points[_mod((curStep * properties.fun1), properties.pieces)];
-          end = points[_mod(((curStep * properties.fun2 + properties.pieces / 2)), properties.pieces)];
+          start = points[(curStep * properties.fun1).mod(properties.pieces)];
+          end = points[((curStep * properties.fun2 + properties.pieces / 2)).mod(properties.pieces)];
           
           ctx.beginPath();
           ctx.strokeStyle = hsv2rgb({hue: curStep % 360, sat: 1, val: 1});
@@ -163,8 +160,8 @@
           
           if (properties.mirror === true)
           {
-            start = points[_mod((-curStep * properties.fun1), properties.pieces)];
-            end = points[_mod(((-curStep * properties.fun2 - properties.pieces / 2)), properties.pieces)];
+            start = points[(-curStep * properties.fun1).mod(properties.pieces)];
+            end = points[((-curStep * properties.fun2 - properties.pieces / 2)).mod(properties.pieces)];
             ctx.moveTo(start.x, start.y);
             ctx.lineTo(end.x, end.y);
             ctx.stroke();
@@ -187,8 +184,8 @@
         
         if (properties.mirror === true)
         {
-          start = points[_mod((-drawStep * properties.fun1), properties.pieces)];
-          end = points[_mod(((-drawStep * properties.fun2 - properties.pieces / 2)), properties.pieces)];
+          start = points[(-drawStep * properties.fun1).mod(properties.pieces)];
+          end = points[((-drawStep * properties.fun2 - properties.pieces / 2)).mod(properties.pieces)];
           ctx.moveTo(start.x, start.y);
           ctx.lineTo(end.x, end.y);
           ctx.stroke();
