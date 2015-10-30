@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>(vector3d) MircoT</title>
+    <title>(threejs, javascript, faces) Behind the scenes with threejs!</title>
     <meta name="description" content="This is my blog, where I will put my experiments and results about how I found a way to solve a problem, hoping to be useful to someone.
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://mircot.github.io/">
+    <link rel="canonical" href="http://mircot.github.io/blog/programming/javascript/2015/10/16/fourtriangles.html">
 </head>
 
 
@@ -54,55 +54,42 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <div class="post">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title">(threejs, javascript, faces) Behind the scenes with threejs!</h1>
+    <p class="post-meta">Oct 16, 2015</p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Oct 16, 2015</span>
+  <article class="post-content">
+    <p>Here we have 4 polygons. The lonely one in the first row is a cube with 6 square faces. Which of the others in the second row has 4 triangular faces?</p>
 
-        <h2>
-          <a class="post-link" href="/blog/programming/javascript/2015/10/16/fourtriangles.html">(threejs, javascript, faces) Behind the scenes with threejs!</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Oct 16, 2015</span>
+<p>Drag with the mouse to verify your response…</p>
+<hr />
 
-        <h2>
-          <a class="post-link" href="/blog/programming/javascript/2015/10/16/cardioidjs.html">(cardioid, javascript, canvas) A cardioid from light reflection...</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Aug 31, 2015</span>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="/js/bower_components/bootstrap/dist/css/bootstrap.min.css" />
 
-        <h2>
-          <a class="post-link" href="/blog/programming/vscode/2015/08/31/vscode-error-ts5023.html">(VS Code, error, TS5023) Unknown compiler option 'p' ???</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 29, 2015</span>
+<!-- Optional theme -->
+<link rel="stylesheet" href="/js/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
 
-        <h2>
-          <a class="post-link" href="/blog/programming/cordova/2015/04/29/cordova-splashscreen.html">(cordova, splashscreen, 0) Splash screen doesn't show...</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 28, 2015</span>
+<div id="threejscene" class="container-fluid text-center">
+</div>
 
-        <h2>
-          <a class="post-link" href="/blog/update/2015/04/28/hello-world.html">(0, 0, 0) Hello World!</a>
-        </h2>
-      </li>
-    
-  </ul>
+<!-- JQuery -->
+<script src="/js/bower_components/jquery/dist/jquery.min.js"></script>
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+<!-- Latest compiled and minified JavaScript -->
+<script src="/js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- ThreeJS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js"></script>
+
+<!-- Main program -->
+<script src="/js/fourtriangles.js"></script>
+
+
+  </article>
 
 </div>
 

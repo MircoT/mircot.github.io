@@ -6,9 +6,51 @@
 </description>
     <link>http://mircot.github.io/</link>
     <atom:link href="http://mircot.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 19 Oct 2015 15:44:21 +0200</pubDate>
-    <lastBuildDate>Mon, 19 Oct 2015 15:44:21 +0200</lastBuildDate>
+    <pubDate>Fri, 30 Oct 2015 10:11:32 +0100</pubDate>
+    <lastBuildDate>Fri, 30 Oct 2015 10:11:32 +0100</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>(threejs, javascript, faces) Behind the scenes with threejs!</title>
+        <description>&lt;p&gt;Here we have 4 polygons. The lonely one in the first row is a cube with 6 square faces. Which of the others in the second row has 4 triangular faces?&lt;/p&gt;
+
+&lt;p&gt;Drag with the mouse to verify your response…&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;!-- Latest compiled and minified CSS --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/js/bower_components/bootstrap/dist/css/bootstrap.min.css&quot; /&gt;
+
+&lt;!-- Optional theme --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/js/bower_components/bootstrap/dist/css/bootstrap-theme.min.css&quot; /&gt;
+
+&lt;div id=&quot;threejscene&quot; class=&quot;container-fluid text-center&quot;&gt;
+&lt;/div&gt;
+
+&lt;!-- JQuery --&gt;
+&lt;script src=&quot;/js/bower_components/jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- Latest compiled and minified JavaScript --&gt;
+&lt;script src=&quot;/js/bower_components/bootstrap/dist/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- ThreeJS --&gt;
+&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- Main program --&gt;
+&lt;script src=&quot;/js/fourtriangles.js&quot;&gt;&lt;/script&gt;
+
+</description>
+        <pubDate>Fri, 16 Oct 2015 11:46:00 +0200</pubDate>
+        <link>http://mircot.github.io/blog/programming/javascript/2015/10/16/fourtriangles.html</link>
+        <guid isPermaLink="true">http://mircot.github.io/blog/programming/javascript/2015/10/16/fourtriangles.html</guid>
+        
+        
+        <category>blog</category>
+        
+        <category>programming</category>
+        
+        <category>javascript</category>
+        
+      </item>
     
       <item>
         <title>(cardioid, javascript, canvas) A cardioid from light reflection...</title>
