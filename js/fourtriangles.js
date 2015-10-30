@@ -5,7 +5,7 @@
       y: 0
   };
 
-  var renderer = new THREE.WebGLRenderer({antialias:true});
+  var renderer = Detector.webgl ? new THREE.WebGLRenderer({antialias:true}) : new THREE.CanvasRenderer();
 
   // Create material
   var cubeMaterialArray = [];

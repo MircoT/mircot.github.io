@@ -6,15 +6,15 @@
 </description>
     <link>http://mircot.github.io/</link>
     <atom:link href="http://mircot.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 30 Oct 2015 10:11:32 +0100</pubDate>
-    <lastBuildDate>Fri, 30 Oct 2015 10:11:32 +0100</lastBuildDate>
+    <pubDate>Fri, 30 Oct 2015 11:39:17 +0100</pubDate>
+    <lastBuildDate>Fri, 30 Oct 2015 11:39:17 +0100</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
         <title>(threejs, javascript, faces) Behind the scenes with threejs!</title>
         <description>&lt;p&gt;Here we have 4 polygons. The lonely one in the first row is a cube with 6 square faces. Which of the others in the second row has 4 triangular faces?&lt;/p&gt;
 
-&lt;p&gt;Drag with the mouse to verify your response…&lt;/p&gt;
+&lt;p&gt;Drag the canvas below with the mouse to verify your response…&lt;/p&gt;
 &lt;hr /&gt;
 
 &lt;!-- Latest compiled and minified CSS --&gt;
@@ -34,6 +34,8 @@
 
 &lt;!-- ThreeJS --&gt;
 &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;script src=&quot;/js/Detector.js&quot;&gt;&lt;/script&gt;
 
 &lt;!-- Main program --&gt;
 &lt;script src=&quot;/js/fourtriangles.js&quot;&gt;&lt;/script&gt;
