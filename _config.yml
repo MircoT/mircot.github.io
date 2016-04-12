@@ -9,6 +9,7 @@ github_username:  MircoT
 
 # Build settings
 markdown: kramdown
+incremental: false
 highlighter: rouge
 safe: true
 lsi: false
