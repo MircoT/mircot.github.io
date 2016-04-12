@@ -6,9 +6,198 @@
 </description>
     <link>http://mircot.github.io/</link>
     <atom:link href="http://mircot.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 30 Oct 2015 11:47:48 +0100</pubDate>
-    <lastBuildDate>Fri, 30 Oct 2015 11:47:48 +0100</lastBuildDate>
+    <pubDate>Tue, 12 Apr 2016 11:53:22 +0200</pubDate>
+    <lastBuildDate>Tue, 12 Apr 2016 11:53:22 +0200</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>(javascript, pdp8, emulator) An emulator of Pdp8 written in Javascript!</title>
+        <description>&lt;p&gt;I wrote a new emulator for Pdp8 in Javascript to make it more portable and here you can see the result.&lt;/p&gt;
+
+&lt;p&gt;You can find the source code on the &lt;a href=&quot;https://github.com/MircoT/js-pdp8/tree/master/app&quot;&gt;js-pdp8 repo&lt;/a&gt; with also the reference and some tips.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&quot;https://github.com/MircoT/js-pdp8/tree/master/lib&quot;&gt;emulator&lt;/a&gt; is separated from the app and can be used with &lt;a href=&quot;https://nodejs.org/en/&quot;&gt;NodeJS&lt;/a&gt;, furthermore the &lt;a href=&quot;https://github.com/MircoT/js-pdp8/tree/master/app&quot;&gt;app&lt;/a&gt; is compatible with &lt;a href=&quot;http://nwjs.io/&quot;&gt;NW.js&lt;/a&gt; and you can start it with that.&lt;/p&gt;
+
+&lt;p&gt;Now try the example below: click &lt;code&gt;Compile&lt;/code&gt;, then &lt;code&gt;Start&lt;/code&gt; and &lt;code&gt;Run&lt;/code&gt; to see the execution of the source code.&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;!-- Bootstrap CSS --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css&quot; /&gt;
+
+&lt;!-- Tether CSS --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/css/tether.min.css&quot; /&gt;
+
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/css/tether-theme-basic.min.css&quot; /&gt;
+
+&lt;!-- CodeMirror CSS --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.css&quot; /&gt;
+
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/theme/mdn-like.css&quot; /&gt;
+
+&lt;!-- My Style --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://rawgit.com/MircoT/js-pdp8/master/app/css/style.css&quot; /&gt;
+
+&lt;div class=&quot;container-fluid&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-md-2&quot;&gt;
+            &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;JS-PDP8&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;col col-md-10&quot;&gt;
+            &lt;div class=&quot;btn-toolbar&quot; role=&quot;toolbar&quot; aria-label=&quot;Toolbar with button groups&quot;&gt;
+                &lt;div class=&quot;btn-group btn-group-sm&quot; role=&quot;group&quot; aria-label=&quot;actions file&quot;&gt;
+                    &lt;label class=&quot;file btn&quot;&gt;
+                        &lt;input type=&quot;file&quot; id=&quot;file_open&quot; accept=&quot;.asm&quot; /&gt;
+                        &lt;span class=&quot;file-open&quot;&gt;&lt;/span&gt;
+                    &lt;/label&gt;
+                    &lt;button class=&quot;btn btn-primary-outline&quot; id=&quot;btn_save&quot;&gt;Save&lt;/button&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;btn-group btn-group-sm&quot; role=&quot;group&quot; aria-label=&quot;actions pdp8&quot;&gt;
+                    &lt;button class=&quot;btn btn-primary-outline&quot; id=&quot;btn_compile&quot;&gt;Compile&lt;/button&gt;
+                    &lt;button class=&quot;btn btn-primary-outline&quot; id=&quot;btn_reset&quot;&gt;Reset&lt;/button&gt;
+                    &lt;button class=&quot;btn btn-primary-outline&quot; id=&quot;btn_start&quot;&gt;Start&lt;/button&gt;
+                    &lt;button class=&quot;btn btn-primary-outline&quot; id=&quot;btn_stop&quot;&gt;Stop&lt;/button&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;btn-group btn-group-sm&quot; role=&quot;group&quot; aria-label=&quot;actions executer&quot;&gt;
+                    &lt;button class=&quot;btn btn-primary-outline&quot; id=&quot;btn_run&quot;&gt;Run&lt;/button&gt;
+                    &lt;button class=&quot;btn btn-primary-outline&quot; id=&quot;btn_step&quot;&gt;Step&lt;/button&gt;
+                    &lt;button class=&quot;btn btn-primary-outline&quot; id=&quot;btn_next&quot;&gt;Next&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;hr /&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-md-4&quot;&gt;
+            &lt;h5&gt;Source&lt;/h5&gt;
+            &lt;div id=&quot;codeMirrorEditor&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;col-md-4&quot;&gt;
+            &lt;h5&gt;Ram&lt;/h5&gt;
+            &lt;div id=&quot;codeMirrorViewer&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;col-md-4&quot;&gt;
+            &lt;div class=&quot;row&quot;&gt;
+                &lt;div class=&quot;col-sm-12&quot;&gt;
+                    &lt;h5&gt;Registers&lt;/h5&gt;
+                    &lt;hr /&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;row&quot;&gt;
+                &lt;div class=&quot;col-sm-7&quot;&gt;
+                    &lt;h6&gt;&lt;span class=&quot;label label-info&quot; id=&quot;PC&quot;&gt;000000000000&lt;/span&gt; PC&lt;/h6&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;col-sm-5&quot;&gt;
+                    &lt;h6&gt;&lt;span class=&quot;label label-opr-i&quot; id=&quot;OPR&quot;&gt;000&lt;/span&gt; OPR&lt;/h6&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;row&quot;&gt;
+                &lt;div class=&quot;col-sm-7&quot;&gt;
+                    &lt;h6&gt;&lt;span class=&quot;label label-warning&quot; id=&quot;MAR&quot;&gt;000000000000&lt;/span&gt; MAR&lt;/h6&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;col-sm-5&quot;&gt;
+                    &lt;h6&gt;&lt;span class=&quot;label label-opr-i&quot; id=&quot;I&quot;&gt;0&lt;/span&gt; I&lt;/h6&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;row&quot;&gt;
+                &lt;div class=&quot;col-sm-7&quot;&gt;
+                    &lt;h6&gt;&lt;span class=&quot;label label-mbr&quot; id=&quot;MBR&quot;&gt;0000000000000000&lt;/span&gt; MBR&lt;/h6&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;col-sm-5&quot;&gt;
+                    &lt;h6&gt;&lt;span class=&quot;label label-primary&quot; id=&quot;AC_INT&quot;&gt;0&lt;/span&gt; AC (int)&lt;/h6&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;row&quot;&gt;
+                &lt;div class=&quot;col-sm-7&quot;&gt;
+                    &lt;h6&gt;&lt;span class=&quot;label label-primary&quot; id=&quot;E&quot;&gt;0&lt;/span&gt;-&lt;span class=&quot;label label-primary&quot; id=&quot;AC&quot;&gt;0000000000000000&lt;/span&gt; E-AC&lt;/h6&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;col-sm-5&quot;&gt;
+                    &lt;h6&gt;&lt;span class=&quot;label label-primary&quot; id=&quot;AC_HEX&quot;&gt;0&lt;/span&gt; AC (hex)&lt;/h6&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;row&quot;&gt;
+                &lt;hr /&gt;
+                &lt;div class=&quot;col-sm-12&quot;&gt;
+                    &lt;h5&gt;Control unit and status&lt;/h5&gt;
+                    &lt;hr /&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;row&quot;&gt;
+                &lt;div class=&quot;col-sm-1&quot;&gt;
+                    &lt;h6&gt;&lt;span class=&quot;label label-danger ctrl-unit-led&quot; id=&quot;S&quot;&gt;S&lt;/span&gt;&lt;/h6&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;col-sm-1&quot;&gt;
+                    &lt;h6&gt;&lt;span class=&quot;label label-success ctrl-unit-led&quot; id=&quot;INT&quot;&gt;INT&lt;/span&gt;&lt;/h6&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;col-sm-3 col-sm-offset-4&quot;&gt;
+                    &lt;h6&gt;Clock &lt;span class=&quot;label label-clock ctrl-unit-led&quot; id=&quot;clock&quot;&gt;0&lt;/span&gt;&lt;/h6&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;row&quot;&gt;
+                &lt;div class=&quot;col-sm-1&quot;&gt;
+                    &lt;h6&gt;F &lt;span class=&quot;label label-primary&quot; id=&quot;F&quot;&gt;0&lt;/span&gt;&lt;/h6&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;col-sm-1&quot;&gt;
+                    &lt;h6&gt;R &lt;span class=&quot;label label-primary&quot; id=&quot;R&quot;&gt;0&lt;/span&gt;&lt;/h6&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;col-sm-3 col-sm-offset-4&quot;&gt;
+                    &lt;h6&gt;&lt;span class=&quot;label label-fetch&quot; id=&quot;cycle&quot;&gt;FETCH&lt;/span&gt;&lt;/h6&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;hr /&gt;
+            &lt;div class=&quot;row&quot;&gt;
+                &lt;div class=&quot;col-sm-6&quot;&gt;
+                    &lt;h6&gt;Last (sub)instruction executed:&lt;/h6&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;col-sm-6&quot;&gt;
+                    &lt;h6&gt;&lt;span class=&quot;label label-last-istr&quot; id=&quot;last_istr&quot;&gt;NOP&lt;/span&gt;&lt;/h6&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;hr /&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-sm-6&quot;&gt;
+            &lt;h3&gt;Source errors&lt;/h3&gt;
+            &lt;ul id=&quot;source_errors&quot; class=&quot;list-group&quot;&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;col-sm-6&quot;&gt;
+            &lt;h3&gt;Terminal&lt;/h3&gt;
+            &lt;textarea class=&quot;form-control terminal&quot; id=&quot;terminal&quot; rows=&quot;5&quot; readonly=&quot;&quot;&gt;&lt;/textarea&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- jQuery first, then tether and Bootstrap JS. --&gt;
+&lt;script src=&quot;https://code.jquery.com/jquery-2.2.3.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;script src=&quot;https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- CodeMirror --&gt;
+&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.js&quot;&gt;&lt;/script&gt;
+
+&lt;script src=&quot;https://rawgit.com/MircoT/js-pdp8/master/app/js/pdp8_lang.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- Main App --&gt;
+&lt;script src=&quot;https://rawgit.com/MircoT/js-pdp8/master/lib/pdp8.js&quot;&gt;&lt;/script&gt;
+
+&lt;script src=&quot;https://rawgit.com/MircoT/js-pdp8/master/app/js/app.js&quot;&gt;&lt;/script&gt;
+
+</description>
+        <pubDate>Tue, 12 Apr 2016 13:30:00 +0200</pubDate>
+        <link>http://mircot.github.io/blog/programming/javascript/2016/04/12/js-pdp8.html</link>
+        <guid isPermaLink="true">http://mircot.github.io/blog/programming/javascript/2016/04/12/js-pdp8.html</guid>
+        
+        
+        <category>blog</category>
+        
+        <category>programming</category>
+        
+        <category>javascript</category>
+        
+      </item>
     
       <item>
         <title>(threejs, javascript, faces) Behind the scenes with threejs!</title>
