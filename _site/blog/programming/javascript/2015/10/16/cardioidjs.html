@@ -233,38 +233,38 @@
 <span class="p">{</span>
   <span class="nx">Cardioid</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">canvas</span><span class="p">,</span> <span class="nx">kwargs</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+    <span class="s1">'use strict'</span><span class="p">;</span>
     
     <span class="c1">// Private</span>
     <span class="kd">var</span> <span class="nx">properties</span> <span class="o">=</span> <span class="p">{};</span>
 
     <span class="k">if</span><span class="p">(</span><span class="nx">kwargs</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span>
       <span class="nx">properties</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="nx">center_x</span><span class="o">:</span> <span class="nx">kwargs</span><span class="p">.</span><span class="nx">pos_x</span> <span class="o">||</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="nx">center_y</span><span class="o">:</span> <span class="nx">kwargs</span><span class="p">.</span><span class="nx">pos_y</span> <span class="o">||</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="nx">step</span><span class="o">:</span> <span class="mi">360</span> <span class="o">/</span> <span class="nx">kwargs</span><span class="p">.</span><span class="nx">pieces</span> <span class="o">||</span> <span class="mi">360</span> <span class="o">/</span> <span class="mi">64</span><span class="p">,</span>
-        <span class="nx">radius</span><span class="o">:</span> <span class="nx">kwargs</span><span class="p">.</span><span class="nx">radius</span> <span class="o">||</span> <span class="mi">200</span><span class="p">,</span>
-        <span class="nx">pieces</span><span class="o">:</span> <span class="nx">kwargs</span><span class="p">.</span><span class="nx">pieces</span> <span class="o">||</span> <span class="mi">64</span><span class="p">,</span>
-        <span class="nx">deltaTime</span><span class="o">:</span> <span class="nx">kwargs</span><span class="p">.</span><span class="nx">deltaTime</span> <span class="o">||</span> <span class="mi">32</span><span class="p">,</span>
-        <span class="nx">initialRotation</span><span class="o">:</span> <span class="nx">kwargs</span><span class="p">.</span><span class="nx">initialRotation</span> <span class="o">||</span> <span class="mi">90</span><span class="p">,</span>
-        <span class="nx">fun1</span><span class="o">:</span> <span class="nx">kwargs</span><span class="p">.</span><span class="nx">fun1</span> <span class="o">||</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="nx">fun2</span><span class="o">:</span> <span class="nx">kwargs</span><span class="p">.</span><span class="nx">fun2</span> <span class="o">||</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="nx">mirror</span><span class="o">:</span> <span class="nx">kwargs</span><span class="p">.</span><span class="nx">mirror</span> <span class="o">||</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nx">numIterations</span><span class="o">:</span> <span class="nx">kwargs</span><span class="p">.</span><span class="nx">iterations</span> <span class="o">||</span> <span class="mi">32</span>
+        <span class="na">center_x</span><span class="p">:</span> <span class="nx">kwargs</span><span class="p">.</span><span class="nx">pos_x</span> <span class="o">||</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="na">center_y</span><span class="p">:</span> <span class="nx">kwargs</span><span class="p">.</span><span class="nx">pos_y</span> <span class="o">||</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="na">step</span><span class="p">:</span> <span class="mi">360</span> <span class="o">/</span> <span class="nx">kwargs</span><span class="p">.</span><span class="nx">pieces</span> <span class="o">||</span> <span class="mi">360</span> <span class="o">/</span> <span class="mi">64</span><span class="p">,</span>
+        <span class="na">radius</span><span class="p">:</span> <span class="nx">kwargs</span><span class="p">.</span><span class="nx">radius</span> <span class="o">||</span> <span class="mi">200</span><span class="p">,</span>
+        <span class="na">pieces</span><span class="p">:</span> <span class="nx">kwargs</span><span class="p">.</span><span class="nx">pieces</span> <span class="o">||</span> <span class="mi">64</span><span class="p">,</span>
+        <span class="na">deltaTime</span><span class="p">:</span> <span class="nx">kwargs</span><span class="p">.</span><span class="nx">deltaTime</span> <span class="o">||</span> <span class="mi">32</span><span class="p">,</span>
+        <span class="na">initialRotation</span><span class="p">:</span> <span class="nx">kwargs</span><span class="p">.</span><span class="nx">initialRotation</span> <span class="o">||</span> <span class="mi">90</span><span class="p">,</span>
+        <span class="na">fun1</span><span class="p">:</span> <span class="nx">kwargs</span><span class="p">.</span><span class="nx">fun1</span> <span class="o">||</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="na">fun2</span><span class="p">:</span> <span class="nx">kwargs</span><span class="p">.</span><span class="nx">fun2</span> <span class="o">||</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="na">mirror</span><span class="p">:</span> <span class="nx">kwargs</span><span class="p">.</span><span class="nx">mirror</span> <span class="o">||</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">numIterations</span><span class="p">:</span> <span class="nx">kwargs</span><span class="p">.</span><span class="nx">iterations</span> <span class="o">||</span> <span class="mi">32</span>
       <span class="p">};</span>
     <span class="k">else</span>
       <span class="nx">properties</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="nx">center_x</span><span class="o">:</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="nx">center_y</span><span class="o">:</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="nx">step</span><span class="o">:</span> <span class="mi">360</span> <span class="o">/</span> <span class="mi">64</span><span class="p">,</span>
-        <span class="nx">radius</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
-        <span class="nx">pieces</span><span class="o">:</span> <span class="mi">64</span><span class="p">,</span>
-        <span class="nx">deltaTime</span><span class="o">:</span> <span class="mi">32</span><span class="p">,</span>
-        <span class="nx">initialRotation</span><span class="o">:</span> <span class="mi">90</span><span class="p">,</span>
-        <span class="nx">fun1</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="nx">fun2</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="nx">mirror</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nx">numIterations</span><span class="o">:</span> <span class="mi">32</span>
+        <span class="na">center_x</span><span class="p">:</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="na">center_y</span><span class="p">:</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="na">step</span><span class="p">:</span> <span class="mi">360</span> <span class="o">/</span> <span class="mi">64</span><span class="p">,</span>
+        <span class="na">radius</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+        <span class="na">pieces</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span>
+        <span class="na">deltaTime</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span>
+        <span class="na">initialRotation</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span>
+        <span class="na">fun1</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="na">fun2</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="na">mirror</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">numIterations</span><span class="p">:</span> <span class="mi">32</span>
       <span class="p">};</span>
     
     <span class="kd">function</span> <span class="nx">hsv2rgb</span><span class="p">(</span><span class="nx">hsv</span><span class="p">)</span>
@@ -278,29 +278,29 @@
         <span class="nx">i</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">h</span><span class="p">);</span>
         <span class="nx">data</span> <span class="o">=</span> <span class="p">[</span><span class="nx">v</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="nx">s</span><span class="p">),</span> <span class="nx">v</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="nx">s</span><span class="o">*</span><span class="p">(</span><span class="nx">h</span><span class="o">-</span><span class="nx">i</span><span class="p">)),</span> <span class="nx">v</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="nx">s</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="nx">h</span><span class="o">-</span><span class="nx">i</span><span class="p">)))];</span>
         <span class="k">switch</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
-          <span class="k">case</span> <span class="mi">0</span><span class="o">:</span>
+          <span class="k">case</span> <span class="mi">0</span><span class="p">:</span>
             <span class="nx">rgb</span> <span class="o">=</span> <span class="p">[</span><span class="nx">v</span><span class="p">,</span> <span class="nx">data</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nx">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]];</span>
             <span class="k">break</span><span class="p">;</span>
-          <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+          <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
             <span class="nx">rgb</span> <span class="o">=</span> <span class="p">[</span><span class="nx">data</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nx">v</span><span class="p">,</span> <span class="nx">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]];</span>
             <span class="k">break</span><span class="p">;</span>
-          <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+          <span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
             <span class="nx">rgb</span> <span class="o">=</span> <span class="p">[</span><span class="nx">data</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">v</span><span class="p">,</span> <span class="nx">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]];</span>
             <span class="k">break</span><span class="p">;</span>
-          <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
+          <span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
             <span class="nx">rgb</span> <span class="o">=</span> <span class="p">[</span><span class="nx">data</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">data</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nx">v</span><span class="p">];</span>
             <span class="k">break</span><span class="p">;</span>
-          <span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
+          <span class="k">case</span> <span class="mi">4</span><span class="p">:</span>
             <span class="nx">rgb</span> <span class="o">=</span> <span class="p">[</span><span class="nx">data</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nx">data</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">v</span><span class="p">];</span>
             <span class="k">break</span><span class="p">;</span>
-          <span class="k">default</span><span class="o">:</span>
+          <span class="nl">default</span><span class="p">:</span>
             <span class="nx">rgb</span> <span class="o">=</span> <span class="p">[</span><span class="nx">v</span><span class="p">,</span> <span class="nx">data</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]];</span>
             <span class="k">break</span><span class="p">;</span>
         <span class="p">}</span>
       <span class="p">}</span>
-      <span class="k">return</span> <span class="s1">&#39;#&#39;</span> <span class="o">+</span> <span class="nx">rgb</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">){</span> 
-        <span class="k">return</span> <span class="p">(</span><span class="s2">&quot;0&quot;</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">x</span><span class="o">*</span><span class="mi">255</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">)).</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span>
-      <span class="p">}).</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+      <span class="k">return</span> <span class="s1">'#'</span> <span class="o">+</span> <span class="nx">rgb</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">){</span> 
+        <span class="k">return</span> <span class="p">(</span><span class="s2">"0"</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">x</span><span class="o">*</span><span class="mi">255</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">)).</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span>
+      <span class="p">}).</span><span class="nx">join</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span>
     <span class="p">}</span>
     
     <span class="nb">Number</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">mod</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">base</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">((</span><span class="k">this</span> <span class="o">%</span> <span class="nx">base</span><span class="p">)</span> <span class="o">+</span> <span class="nx">base</span><span class="p">)</span> <span class="o">%</span> <span class="nx">base</span><span class="p">;</span> <span class="p">}</span>
@@ -315,12 +315,12 @@
 
         <span class="kd">var</span> <span class="nx">point</span> <span class="o">=</span>
         <span class="p">{</span>
-          <span class="nx">x</span><span class="o">:</span> <span class="nx">properties</span><span class="p">.</span><span class="nx">center_x</span> <span class="o">+</span> <span class="nx">properties</span><span class="p">.</span><span class="nx">radius</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nx">rad</span><span class="p">),</span>
-          <span class="nx">y</span><span class="o">:</span> <span class="nx">properties</span><span class="p">.</span><span class="nx">center_y</span> <span class="o">+</span> <span class="nx">properties</span><span class="p">.</span><span class="nx">radius</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">rad</span><span class="p">),</span>
-          <span class="nx">text_x</span><span class="o">:</span> <span class="nx">properties</span><span class="p">.</span><span class="nx">center_x</span> <span class="o">-</span> <span class="mi">6</span> <span class="o">+</span> <span class="p">(</span><span class="nx">properties</span><span class="p">.</span><span class="nx">radius</span> <span class="o">+</span> <span class="mi">16</span><span class="p">)</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nx">rad</span><span class="p">),</span>
-          <span class="nx">text_y</span><span class="o">:</span> <span class="nx">properties</span><span class="p">.</span><span class="nx">center_y</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="p">(</span><span class="nx">properties</span><span class="p">.</span><span class="nx">radius</span> <span class="o">+</span> <span class="mi">16</span><span class="p">)</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">rad</span><span class="p">),</span>
-          <span class="nx">rad</span><span class="o">:</span> <span class="nx">rad</span><span class="p">,</span>
-          <span class="nx">angle</span><span class="o">:</span> <span class="nx">tmp_angle</span>
+          <span class="na">x</span><span class="p">:</span> <span class="nx">properties</span><span class="p">.</span><span class="nx">center_x</span> <span class="o">+</span> <span class="nx">properties</span><span class="p">.</span><span class="nx">radius</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nx">rad</span><span class="p">),</span>
+          <span class="na">y</span><span class="p">:</span> <span class="nx">properties</span><span class="p">.</span><span class="nx">center_y</span> <span class="o">+</span> <span class="nx">properties</span><span class="p">.</span><span class="nx">radius</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">rad</span><span class="p">),</span>
+          <span class="na">text_x</span><span class="p">:</span> <span class="nx">properties</span><span class="p">.</span><span class="nx">center_x</span> <span class="o">-</span> <span class="mi">6</span> <span class="o">+</span> <span class="p">(</span><span class="nx">properties</span><span class="p">.</span><span class="nx">radius</span> <span class="o">+</span> <span class="mi">16</span><span class="p">)</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nx">rad</span><span class="p">),</span>
+          <span class="na">text_y</span><span class="p">:</span> <span class="nx">properties</span><span class="p">.</span><span class="nx">center_y</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="p">(</span><span class="nx">properties</span><span class="p">.</span><span class="nx">radius</span> <span class="o">+</span> <span class="mi">16</span><span class="p">)</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">rad</span><span class="p">),</span>
+          <span class="na">rad</span><span class="p">:</span> <span class="nx">rad</span><span class="p">,</span>
+          <span class="na">angle</span><span class="p">:</span> <span class="nx">tmp_angle</span>
         <span class="p">};</span>
 
         <span class="nx">points</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">point</span><span class="p">);</span>
@@ -330,7 +330,7 @@
     <span class="kd">function</span> <span class="nx">_drawCircle</span><span class="p">()</span>
     <span class="p">{</span>
       <span class="nx">ctx</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
-      <span class="nx">ctx</span><span class="p">.</span><span class="nx">strokeStyle</span> <span class="o">=</span> <span class="s2">&quot;#000000&quot;</span><span class="p">;</span>
+      <span class="nx">ctx</span><span class="p">.</span><span class="nx">strokeStyle</span> <span class="o">=</span> <span class="s2">"#000000"</span><span class="p">;</span>
       <span class="nx">ctx</span><span class="p">.</span><span class="nx">arc</span><span class="p">(</span><span class="nx">properties</span><span class="p">.</span><span class="nx">center_x</span><span class="p">,</span> <span class="nx">properties</span><span class="p">.</span><span class="nx">center_y</span><span class="p">,</span> <span class="nx">properties</span><span class="p">.</span><span class="nx">radius</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">);</span>
       <span class="nx">ctx</span><span class="p">.</span><span class="nx">stroke</span><span class="p">();</span>
       <span class="nx">ctx</span><span class="p">.</span><span class="nx">closePath</span><span class="p">();</span>
@@ -348,7 +348,7 @@
           <span class="nx">point</span> <span class="o">=</span> <span class="nx">points</span><span class="p">[</span><span class="nx">index</span><span class="p">];</span>
 
           <span class="nx">ctx</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
-          <span class="nx">ctx</span><span class="p">.</span><span class="nx">strokeStyle</span> <span class="o">=</span> <span class="s2">&quot;#000000&quot;</span><span class="p">;</span>
+          <span class="nx">ctx</span><span class="p">.</span><span class="nx">strokeStyle</span> <span class="o">=</span> <span class="s2">"#000000"</span><span class="p">;</span>
           <span class="nx">ctx</span><span class="p">.</span><span class="nx">arc</span><span class="p">(</span><span class="nx">point</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="nx">point</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">);</span>
           <span class="nx">ctx</span><span class="p">.</span><span class="nx">stroke</span><span class="p">();</span>
           <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillText</span><span class="p">(</span><span class="nx">index</span><span class="p">.</span><span class="nx">toString</span><span class="p">(),</span> <span class="nx">point</span><span class="p">.</span><span class="nx">text_x</span><span class="p">,</span> <span class="nx">point</span><span class="p">.</span><span class="nx">text_y</span><span class="p">);</span>
@@ -381,7 +381,7 @@
           <span class="nx">end</span> <span class="o">=</span> <span class="nx">points</span><span class="p">[((</span><span class="nx">curStep</span> <span class="o">*</span> <span class="nx">properties</span><span class="p">.</span><span class="nx">fun2</span> <span class="o">+</span> <span class="nx">properties</span><span class="p">.</span><span class="nx">pieces</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)).</span><span class="nx">mod</span><span class="p">(</span><span class="nx">properties</span><span class="p">.</span><span class="nx">pieces</span><span class="p">)];</span>
           
           <span class="nx">ctx</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
-          <span class="nx">ctx</span><span class="p">.</span><span class="nx">strokeStyle</span> <span class="o">=</span> <span class="nx">hsv2rgb</span><span class="p">({</span><span class="nx">hue</span><span class="o">:</span> <span class="nx">curStep</span> <span class="o">%</span> <span class="mi">360</span><span class="p">,</span> <span class="nx">sat</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">val</span><span class="o">:</span> <span class="mi">1</span><span class="p">});</span>
+          <span class="nx">ctx</span><span class="p">.</span><span class="nx">strokeStyle</span> <span class="o">=</span> <span class="nx">hsv2rgb</span><span class="p">({</span><span class="na">hue</span><span class="p">:</span> <span class="nx">curStep</span> <span class="o">%</span> <span class="mi">360</span><span class="p">,</span> <span class="na">sat</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">val</span><span class="p">:</span> <span class="mi">1</span><span class="p">});</span>
           <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineWidth</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
           
           <span class="nx">ctx</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span><span class="nx">start</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="nx">start</span><span class="p">.</span><span class="nx">y</span><span class="p">);</span>
@@ -405,7 +405,7 @@
         <span class="nx">end</span> <span class="o">=</span> <span class="nx">points</span><span class="p">[((</span><span class="nx">drawStep</span> <span class="o">*</span> <span class="nx">properties</span><span class="p">.</span><span class="nx">fun2</span> <span class="o">+</span> <span class="nx">properties</span><span class="p">.</span><span class="nx">pieces</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span> <span class="o">%</span> <span class="nx">properties</span><span class="p">.</span><span class="nx">pieces</span><span class="p">];</span>
         
         <span class="nx">ctx</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
-        <span class="nx">ctx</span><span class="p">.</span><span class="nx">strokeStyle</span> <span class="o">=</span> <span class="nx">hsv2rgb</span><span class="p">({</span><span class="nx">hue</span><span class="o">:</span> <span class="nx">drawStep</span> <span class="o">%</span> <span class="mi">360</span><span class="p">,</span> <span class="nx">sat</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">val</span><span class="o">:</span> <span class="mi">1</span><span class="p">});</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">strokeStyle</span> <span class="o">=</span> <span class="nx">hsv2rgb</span><span class="p">({</span><span class="na">hue</span><span class="p">:</span> <span class="nx">drawStep</span> <span class="o">%</span> <span class="mi">360</span><span class="p">,</span> <span class="na">sat</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">val</span><span class="p">:</span> <span class="mi">1</span><span class="p">});</span>
         <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineWidth</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
         
         <span class="nx">ctx</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span><span class="nx">start</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="nx">start</span><span class="p">.</span><span class="nx">y</span><span class="p">);</span>
@@ -429,12 +429,12 @@
       
     <span class="p">}</span>
     
-    <span class="cm">/**</span>
-<span class="cm">      * args = {</span>
-<span class="cm">      *  animCard: boolean,</span>
-<span class="cm">      *  animNum: boolean</span>
-<span class="cm">      * }</span>
-<span class="cm">      */</span>
+    <span class="cm">/**
+      * args = {
+      *  animCard: boolean,
+      *  animNum: boolean
+      * }
+      */</span>
     <span class="kd">function</span> <span class="nx">_draw</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span>
     <span class="p">{</span>
       <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">animationReferencePoints</span><span class="p">);</span>
@@ -459,27 +459,27 @@
     <span class="kd">var</span> <span class="nx">animationReferencePoints</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
     <span class="kd">var</span> <span class="nx">animationReferenceCardioid</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
     
-    <span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">"2d"</span><span class="p">);</span>
     <span class="kd">var</span> <span class="nx">points</span> <span class="o">=</span> <span class="p">[];</span>
     <span class="nx">_genPoints</span><span class="p">();</span>
     
     <span class="c1">// Public</span>
     <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="nx">drawCircle</span><span class="o">:</span> <span class="nx">_drawCircle</span><span class="p">,</span>
-      <span class="nx">drawPoints</span><span class="o">:</span> <span class="nx">_drawPoints</span><span class="p">,</span>
-      <span class="nx">drawCarioid</span><span class="o">:</span> <span class="nx">_drawCarioid</span><span class="p">,</span>
-      <span class="nx">draw</span><span class="o">:</span> <span class="nx">_draw</span><span class="p">,</span>
-      <span class="nx">changeRadius</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">newRaius</span><span class="p">)</span>
+      <span class="na">drawCircle</span><span class="p">:</span> <span class="nx">_drawCircle</span><span class="p">,</span>
+      <span class="na">drawPoints</span><span class="p">:</span> <span class="nx">_drawPoints</span><span class="p">,</span>
+      <span class="na">drawCarioid</span><span class="p">:</span> <span class="nx">_drawCarioid</span><span class="p">,</span>
+      <span class="na">draw</span><span class="p">:</span> <span class="nx">_draw</span><span class="p">,</span>
+      <span class="na">changeRadius</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">newRaius</span><span class="p">)</span>
       <span class="p">{</span>
         <span class="nx">properties</span><span class="p">.</span><span class="nx">radius</span> <span class="o">=</span> <span class="nx">newRaius</span><span class="p">;</span>
         <span class="nx">_clear</span><span class="p">();</span>
       <span class="p">},</span>
-      <span class="nx">changeInitialRotation</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">newInitialRotation</span><span class="p">)</span>
+      <span class="na">changeInitialRotation</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">newInitialRotation</span><span class="p">)</span>
       <span class="p">{</span>
         <span class="nx">properties</span><span class="p">.</span><span class="nx">initialRotation</span> <span class="o">=</span> <span class="nx">newInitialRotation</span><span class="p">;</span>
         <span class="nx">_clear</span><span class="p">();</span>
       <span class="p">},</span>
-      <span class="nx">changeNumPoints</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">newPointsNum</span><span class="p">)</span>
+      <span class="na">changeNumPoints</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">newPointsNum</span><span class="p">)</span>
       <span class="p">{</span>
         <span class="k">if</span><span class="p">(</span><span class="nx">newPointsNum</span> <span class="o">!==</span> <span class="nx">properties</span><span class="p">.</span><span class="nx">pieces</span><span class="p">)</span>
         <span class="p">{</span>
@@ -488,14 +488,14 @@
           <span class="nx">_clear</span><span class="p">();</span>
         <span class="p">}</span>
       <span class="p">},</span>
-      <span class="nx">changeDeltaTime</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">newDeltaTime</span><span class="p">)</span>
+      <span class="na">changeDeltaTime</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">newDeltaTime</span><span class="p">)</span>
       <span class="p">{</span>
         <span class="k">if</span><span class="p">(</span><span class="nx">newDeltaTime</span> <span class="o">!==</span> <span class="nx">properties</span><span class="p">.</span><span class="nx">deltaTime</span><span class="p">)</span>
         <span class="p">{</span>
           <span class="nx">properties</span><span class="p">.</span><span class="nx">deltaTime</span> <span class="o">=</span> <span class="nx">newDeltaTime</span><span class="p">;</span>
         <span class="p">}</span>
       <span class="p">},</span>
-      <span class="nx">changeNumInterations</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">newNumInterations</span><span class="p">)</span>
+      <span class="na">changeNumInterations</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">newNumInterations</span><span class="p">)</span>
       <span class="p">{</span>
         <span class="k">if</span><span class="p">(</span><span class="nx">newNumInterations</span> <span class="o">!==</span> <span class="nx">properties</span><span class="p">.</span><span class="nx">numIterations</span><span class="p">)</span>
         <span class="p">{</span>
@@ -503,11 +503,11 @@
           <span class="nx">_clear</span><span class="p">();</span>
         <span class="p">}</span>
       <span class="p">},</span>
-      <span class="nx">setMirror</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">newState</span><span class="p">)</span>
+      <span class="na">setMirror</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">newState</span><span class="p">)</span>
       <span class="p">{</span>
         <span class="nx">properties</span><span class="p">.</span><span class="nx">mirror</span> <span class="o">=</span> <span class="nx">newState</span><span class="p">;</span>
       <span class="p">},</span>
-      <span class="nx">changeFun</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span>
+      <span class="na">changeFun</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span>
       <span class="p">{</span>
         <span class="kd">var</span> <span class="nx">dirty</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
         <span class="k">if</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">fun1</span> <span class="o">!==</span> <span class="kc">undefined</span> <span class="o">&amp;&amp;</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">fun1</span> <span class="o">!==</span> <span class="nx">properties</span><span class="p">.</span><span class="nx">fun1</span><span class="p">)</span> <span class="p">{</span>
