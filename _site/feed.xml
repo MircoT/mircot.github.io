@@ -6,8 +6,8 @@
 </description>
     <link>http://mircot.github.io/</link>
     <atom:link href="http://mircot.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 13 Apr 2016 11:05:50 +0200</pubDate>
-    <lastBuildDate>Wed, 13 Apr 2016 11:05:50 +0200</lastBuildDate>
+    <pubDate>Mon, 25 Apr 2016 13:40:15 +0200</pubDate>
+    <lastBuildDate>Mon, 25 Apr 2016 13:40:15 +0200</lastBuildDate>
     <generator>Jekyll v3.0.3</generator>
     
       <item>
@@ -22,17 +22,17 @@
 &lt;hr /&gt;
 
 &lt;!-- Bootstrap CSS --&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/js/jspdp8/bootstrap4/css/bootstrap.min.css&quot; /&gt;
 
 &lt;!-- Tether CSS --&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/css/tether.min.css&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/js/jspdp8/tether/css/tether.min.css&quot; /&gt;
 
-&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/css/tether-theme-basic.min.css&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/js/jspdp8/tether/css/tether-theme-basic.min.css&quot; /&gt;
 
 &lt;!-- CodeMirror CSS --&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.css&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/js/jspdp8/codemirror/codemirror.css&quot; /&gt;
 
-&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/theme/mdn-like.css&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/js/jspdp8/codemirror/mdn-like.css&quot; /&gt;
 
 &lt;!-- My Style --&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;https://rawgit.com/MircoT/js-pdp8/master/app/css/style.css&quot; /&gt;
@@ -49,18 +49,18 @@
                         &lt;input type=&quot;file&quot; id=&quot;file_open&quot; accept=&quot;.asm&quot; /&gt;
                         &lt;span class=&quot;file-open&quot;&gt;&lt;/span&gt;
                     &lt;/label&gt;
-                    &lt;button class=&quot;btn btn-primary-outline&quot; id=&quot;btn_save&quot;&gt;Save&lt;/button&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;btn btn-primary-outline&quot; id=&quot;btn_save&quot;&gt;Save&lt;/button&gt;
                 &lt;/div&gt;
                 &lt;div class=&quot;btn-group btn-group-sm&quot; role=&quot;group&quot; aria-label=&quot;actions pdp8&quot;&gt;
-                    &lt;button class=&quot;btn btn-primary-outline&quot; id=&quot;btn_compile&quot;&gt;Compile&lt;/button&gt;
-                    &lt;button class=&quot;btn btn-primary-outline&quot; id=&quot;btn_reset&quot;&gt;Reset&lt;/button&gt;
-                    &lt;button class=&quot;btn btn-primary-outline&quot; id=&quot;btn_start&quot;&gt;Start&lt;/button&gt;
-                    &lt;button class=&quot;btn btn-primary-outline&quot; id=&quot;btn_stop&quot;&gt;Stop&lt;/button&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;btn btn-primary-outline&quot; id=&quot;btn_compile&quot;&gt;Compile&lt;/button&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;btn btn-primary-outline&quot; id=&quot;btn_reset&quot;&gt;Reset&lt;/button&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;btn btn-primary-outline&quot; id=&quot;btn_start&quot;&gt;Start&lt;/button&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;btn btn-primary-outline&quot; id=&quot;btn_stop&quot;&gt;Stop&lt;/button&gt;
                 &lt;/div&gt;
                 &lt;div class=&quot;btn-group btn-group-sm&quot; role=&quot;group&quot; aria-label=&quot;actions executer&quot;&gt;
-                    &lt;button class=&quot;btn btn-primary-outline&quot; id=&quot;btn_run&quot;&gt;Run&lt;/button&gt;
-                    &lt;button class=&quot;btn btn-primary-outline&quot; id=&quot;btn_step&quot;&gt;Step&lt;/button&gt;
-                    &lt;button class=&quot;btn btn-primary-outline&quot; id=&quot;btn_next&quot;&gt;Next&lt;/button&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;btn btn-primary-outline&quot; id=&quot;btn_run&quot;&gt;Run&lt;/button&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;btn btn-primary-outline&quot; id=&quot;btn_step&quot;&gt;Step&lt;/button&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;btn btn-primary-outline&quot; id=&quot;btn_next&quot;&gt;Next&lt;/button&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
@@ -171,12 +171,12 @@
 &lt;!-- jQuery first, then tether and Bootstrap JS. --&gt;
 &lt;script src=&quot;https://code.jquery.com/jquery-2.2.3.min.js&quot;&gt;&lt;/script&gt;
 
-&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/js/jspdp8/tether/js/tether.min.js&quot;&gt;&lt;/script&gt;
 
-&lt;script src=&quot;https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/js/jspdp8/bootstrap4/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
 
 &lt;!-- CodeMirror --&gt;
-&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/js/jspdp8/codemirror/codemirror.js&quot;&gt;&lt;/script&gt;
 
 &lt;script src=&quot;https://rawgit.com/MircoT/js-pdp8/master/app/js/pdp8_lang.js&quot;&gt;&lt;/script&gt;
 
