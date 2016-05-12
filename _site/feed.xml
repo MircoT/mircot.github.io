@@ -6,15 +6,59 @@
 </description>
     <link>http://mircot.github.io/</link>
     <atom:link href="http://mircot.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 25 Apr 2016 13:40:15 +0200</pubDate>
-    <lastBuildDate>Mon, 25 Apr 2016 13:40:15 +0200</lastBuildDate>
-    <generator>Jekyll v3.0.3</generator>
+    <pubDate>Thu, 12 May 2016 10:43:00 +0200</pubDate>
+    <lastBuildDate>Thu, 12 May 2016 10:43:00 +0200</lastBuildDate>
+    <generator>Jekyll v3.0.5</generator>
+    
+      <item>
+        <title>(server, web, nginx) Serve only some files by exension</title>
+        <description>&lt;p&gt;Often I manage websites that use &lt;em&gt;bower&lt;/em&gt; as package manager and I don’t want to grant the access to all the packages installed, so I have to filter the file served by nginx. You can see the regex of the service in the next snippet of code:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-nginx&quot; data-lang=&quot;nginx&quot;&gt;&lt;span class=&quot;k&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;listen&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;  &lt;span class=&quot;s&quot;&gt;ssl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;server_name&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;localhost&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kn&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;^/mywebsite/(.*)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;.(html|htm|js|css|png|jpe?g|ico|gif|eot|ttf|woff)(.*)&lt;/span&gt;$ &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kn&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;/path/to/my/static/www/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        
+        &lt;span class=&quot;kn&quot;&gt;try_files&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$2$3&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;404&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;So the website &lt;code class=&quot;highlighter-rouge&quot;&gt;http://mydomain.domain/mywebsite/&lt;/code&gt; is the base &lt;em&gt;URL&lt;/em&gt;, what remains of the string is divided in three parts: file name, extension, query.&lt;/p&gt;
+
+&lt;p&gt;File name is a string composed by any characters: &lt;code class=&quot;highlighter-rouge&quot;&gt;http://mydomain.domain/mywebsite/filename&lt;/code&gt;. After this you have to find a point and a valid extension: &lt;code class=&quot;highlighter-rouge&quot;&gt;http://mydomain.domain/mywebsite/filename.html&lt;/code&gt;. In the end you can find also some query string: &lt;code class=&quot;highlighter-rouge&quot;&gt;http://mydomain.domain/mywebsite/filename.html?param1=test&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;As you can see in the last &lt;em&gt;URL&lt;/em&gt; example (&lt;code class=&quot;highlighter-rouge&quot;&gt;http://mydomain.domain/mywebsite/filename.html?param1=test&lt;/code&gt;) the three parts are:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;filename&lt;/li&gt;
+  &lt;li&gt;html&lt;/li&gt;
+  &lt;li&gt;?param1=test&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;At this point I try to serve the file composed with these three components &lt;code class=&quot;highlighter-rouge&quot;&gt;try_files $1.$2$3&lt;/code&gt; otherwise I will return a not found error &lt;code class=&quot;highlighter-rouge&quot;&gt;=404&lt;/code&gt;. The files will be searched in the path indicated in alias, that correspond to the main folder of the website.&lt;/p&gt;
+
+&lt;p&gt;The third component is useful for some &lt;em&gt;URL&lt;/em&gt; that require some file with a parameter, like bootstrap fonts.&lt;/p&gt;
+
+&lt;p&gt;If you need some help to start with &lt;strong&gt;nginx&lt;/strong&gt; take a look to this &lt;a href=&quot;https://www.digitalocean.com/community/tutorials/understanding-nginx-server-and-location-block-selection-algorithms&quot;&gt;tutorial&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 12 May 2016 11:00:00 +0200</pubDate>
+        <link>http://mircot.github.io/server/web/2016/05/12/nginxservefiles.html</link>
+        <guid isPermaLink="true">http://mircot.github.io/server/web/2016/05/12/nginxservefiles.html</guid>
+        
+        
+        <category>server</category>
+        
+        <category>web</category>
+        
+      </item>
     
       <item>
         <title>(javascript, pdp8, emulator) An emulator of Pdp8 written in Javascript!</title>
         <description>&lt;p&gt;I wrote a new emulator for Pdp8 in Javascript to make it more portable and here you can see the result.&lt;/p&gt;
 
-&lt;p&gt;You can find the source code on the &lt;a href=&quot;https://github.com/MircoT/js-pdp8/tree/master/app&quot;&gt;js-pdp8 repo&lt;/a&gt; with also the reference and some tips.&lt;/p&gt;
+&lt;p&gt;You can find the source code on the &lt;a href=&quot;https://github.com/MircoT/js-pdp8&quot;&gt;js-pdp8 repo&lt;/a&gt; with also the reference and some tips.&lt;/p&gt;
 
 &lt;p&gt;The &lt;a href=&quot;https://github.com/MircoT/js-pdp8/tree/master/lib&quot;&gt;emulator&lt;/a&gt; is separated from the app and can be used with &lt;a href=&quot;https://nodejs.org/en/&quot;&gt;NodeJS&lt;/a&gt;, furthermore the &lt;a href=&quot;https://github.com/MircoT/js-pdp8/tree/master/app&quot;&gt;app&lt;/a&gt; is compatible with &lt;a href=&quot;http://nwjs.io/&quot;&gt;NW.js&lt;/a&gt; and you can start it with that.&lt;/p&gt;
 

@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>(vector3d) MircoT</title>
+    <title>(server, web, nginx) Serve only some files by exension</title>
     <meta name="description" content="This is my blog, where I will put my experiments and results about how I found a way to solve a problem, hoping to be useful to someone.
 ">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?" >
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://mircot.github.io/">
+    <link rel="canonical" href="http://mircot.github.io/server/web/2016/05/12/nginxservefiles.html">
 </head>
 
 
@@ -55,71 +55,46 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <div class="post">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title">(server, web, nginx) Serve only some files by exension</h1>
+    <p class="post-meta">May 12, 2016</p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">May 12, 2016</span>
+  <article class="post-content">
+    <p>Often I manage websites that use <em>bower</em> as package manager and I don’t want to grant the access to all the packages installed, so I have to filter the file served by nginx. You can see the regex of the service in the next snippet of code:</p>
 
-        <h2>
-          <a class="post-link" href="/server/web/2016/05/12/nginxservefiles.html">(server, web, nginx) Serve only some files by exension</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 12, 2016</span>
+<figure class="highlight"><pre><code class="language-nginx" data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span>  <span class="mi">80</span>  <span class="s">ssl</span><span class="p">;</span>
+    <span class="kn">server_name</span> <span class="s">localhost</span><span class="p">;</span>
 
-        <h2>
-          <a class="post-link" href="/blog/programming/javascript/2016/04/12/jspdp8.html">(javascript, pdp8, emulator) An emulator of Pdp8 written in Javascript!</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Oct 16, 2015</span>
+    <span class="kn">location</span> <span class="p">~</span><span class="sr">*</span> <span class="s">^/mywebsite/(.*)</span><span class="err">\</span><span class="s">.(html|htm|js|css|png|jpe?g|ico|gif|eot|ttf|woff)(.*)</span>$ <span class="p">{</span>
+        <span class="kn">alias</span> <span class="n">/path/to/my/static/www/</span><span class="p">;</span>
+        
+        <span class="kn">try_files</span> <span class="nv">$1</span><span class="s">.</span><span class="nv">$2$3</span> <span class="p">=</span><span class="mi">404</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
 
-        <h2>
-          <a class="post-link" href="/blog/programming/javascript/2015/10/16/fourtriangles.html">(threejs, javascript, faces) Behind the scenes with threejs!</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Oct 16, 2015</span>
+<p>So the website <code class="highlighter-rouge">http://mydomain.domain/mywebsite/</code> is the base <em>URL</em>, what remains of the string is divided in three parts: file name, extension, query.</p>
 
-        <h2>
-          <a class="post-link" href="/blog/programming/javascript/2015/10/16/cardioidjs.html">(cardioid, javascript, canvas) A cardioid from light reflection...</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Aug 31, 2015</span>
+<p>File name is a string composed by any characters: <code class="highlighter-rouge">http://mydomain.domain/mywebsite/filename</code>. After this you have to find a point and a valid extension: <code class="highlighter-rouge">http://mydomain.domain/mywebsite/filename.html</code>. In the end you can find also some query string: <code class="highlighter-rouge">http://mydomain.domain/mywebsite/filename.html?param1=test</code>.</p>
 
-        <h2>
-          <a class="post-link" href="/blog/programming/vscode/2015/08/31/vscode-error-ts5023.html">(VS Code, error, TS5023) Unknown compiler option 'p' ???</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 29, 2015</span>
+<p>As you can see in the last <em>URL</em> example (<code class="highlighter-rouge">http://mydomain.domain/mywebsite/filename.html?param1=test</code>) the three parts are:</p>
 
-        <h2>
-          <a class="post-link" href="/blog/programming/cordova/2015/04/29/cordova-splashscreen.html">(cordova, splashscreen, 0) Splash screen doesn't show...</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 28, 2015</span>
+<ol>
+  <li>filename</li>
+  <li>html</li>
+  <li>?param1=test</li>
+</ol>
 
-        <h2>
-          <a class="post-link" href="/blog/update/2015/04/28/hello-world.html">(0, 0, 0) Hello World!</a>
-        </h2>
-      </li>
-    
-  </ul>
+<p>At this point I try to serve the file composed with these three components <code class="highlighter-rouge">try_files $1.$2$3</code> otherwise I will return a not found error <code class="highlighter-rouge">=404</code>. The files will be searched in the path indicated in alias, that correspond to the main folder of the website.</p>
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+<p>The third component is useful for some <em>URL</em> that require some file with a parameter, like bootstrap fonts.</p>
+
+<p>If you need some help to start with <strong>nginx</strong> take a look to this <a href="https://www.digitalocean.com/community/tutorials/understanding-nginx-server-and-location-block-selection-algorithms">tutorial</a>.</p>
+
+  </article>
 
 </div>
 
