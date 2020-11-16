@@ -1,0 +1,153 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="/js/bower_components/bootstrap/dist/css/bootstrap.min.css">
+<!-- bootstrap slider -->
+<link rel="stylesheet" href="/js/bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="/js/bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+
+<div class="container-fluid text-center">
+  <canvas id="myCanvas" width="512" height="512" style="border:1px solid #eeeeee;">
+    Your browser does not support the HTML5 canvas tag.
+  </canvas>
+  <div class="text-right">
+    <div class="row">
+      <div class="col-md-2 col-md-offset-2"><label style="margin-right: 8px;">Circle size</label></div>
+      <div class="col-md-4"><input id="circleSizeSlider" type="text" data-slider-min="100" data-slider-max="250" data-slider-step="1" data-slider-value="200" data-slider-tooltip="hide" /></div>
+      <div class="col-md-1"><span id="circleSizeLabel" class="label label-primary">200</span></div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-md-offset-2"><label style="margin-right: 8px;">Circle rotation</label></div>
+      <div class="col-md-4"><input id="circleRotationSlider" type="text" data-slider-min="0" data-slider-max="360" data-slider-step="1" data-slider-value="0" data-slider-tooltip="hide" /></div>
+      <div class="col-md-1"><span id="circleRotationLabel" class="label label-primary">0</span></div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-md-offset-2"><label style="margin-right: 8px;">Number of points</label></div>
+      <div class="col-md-4"><input id="numPointsSlider" type="text" data-slider-min="32" data-slider-max="512" data-slider-step="32" data-slider-value="64" data-slider-tooltip="hide" /></div>
+      <div class="col-md-1"><span id="numPointsLabel" class="label label-primary">64</span></div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-md-offset-2"><label style="margin-right: 8px;">Function step 1</label></div>
+      <div class="col-md-4"><input id="fun1NumSlider" type="text" data-slider-min="1" data-slider-max="32" data-slider-step="1" data-slider-value="2" data-slider-tooltip="hide" /></div>
+      <div class="col-md-1"><span id="fun1NumLabel" class="label label-primary">2</span></div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-md-offset-2"><label style="margin-right: 8px;">Function step 2</label></div>
+      <div class="col-md-4"><input id="fun2NumSlider" type="text" data-slider-min="1" data-slider-max="32" data-slider-step="1" data-slider-value="1" data-slider-tooltip="hide" /></div>
+      <div class="col-md-1"><span id="fun2NumLabel" class="label label-primary">1</span></div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-md-offset-2"><label style="margin-right: 8px;">Number of iterations</label></div>
+      <div class="col-md-4"><input id="numIterationsSlider" type="text" data-slider-min="180" data-slider-max="1024" data-slider-step="1" data-slider-value="180" data-slider-tooltip="hide" /></div>
+      <div class="col-md-1"><span id="numIterationsLabel" class="label label-primary">180</span></div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-md-offset-2"><label style="margin-right: 8px;">&Delta; time</label></div>
+      <div class="col-md-4"><input id="deltaTimeSlider" type="text" data-slider-min="16" data-slider-max="2500" data-slider-step="32" data-slider-value="32" data-slider-tooltip="hide" /></div>
+      <div class="col-md-1"><span id="deltaTimeLabel" class="label label-primary">32</span></div>
+      
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-md-offset-4"><button id="animate" type="button" class="btn btn-primary">Animate</button></div>
+      <div class="col-md-1">
+        <div class="checkbox">
+          <label>
+            <input id="mirror" type="checkbox" checked value="true"> Mirror
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- JQuery -->
+<script src="/js/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="/js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- bootstrap slider -->
+<script src="/js/bower_components/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js"></script>
+<!-- Cardioid Module -->
+<script src="/js/cardioid.js"></script>
+<script>
+  'use strict';
+  var canvas = document.getElementById("myCanvas");
+  var rotationDelta = 90;
+  var cardioid = new Cardioid(canvas, {
+    pos_x: canvas.width / 2,
+    pos_y: canvas.height / 2,
+    mirror: true,
+    iterations: 180,
+    initialRotation: rotationDelta,
+    fun1: 2,
+    fun2: 1,
+    radius: 200,
+    pieces: 64,
+    deltaTime: 32
+  });
+
+  cardioid.draw(
+    {
+      animNum: true,
+      animCard: true
+    }
+  );
+  
+  $("#circleSizeSlider").slider().on("slide", function(slideEvt) {
+	cardioid.changeRadius(slideEvt.value);
+    $("#circleSizeLabel").text(slideEvt.value.toString());
+  });
+  
+  $("#circleRotationSlider").slider().on("slide", function(slideEvt) {
+	cardioid.changeInitialRotation(slideEvt.value + rotationDelta);
+    $("#circleRotationLabel").text(slideEvt.value.toString());
+  });
+  
+  $("#numPointsSlider").slider().on("slide", function(slideEvt) {
+	cardioid.changeNumPoints(slideEvt.value);
+    $("#numPointsLabel").text(slideEvt.value.toString());
+  });
+  
+  $("#deltaTimeSlider").slider().on("slide", function(slideEvt) {
+	cardioid.changeDeltaTime(slideEvt.value);
+    $("#deltaTimeLabel").text(slideEvt.value.toString());
+  });
+  
+  $("#fun1NumSlider").slider().on("slide", function(slideEvt) {
+	cardioid.changeFun({ fun1: slideEvt.value });
+    $("#fun1NumLabel").text(slideEvt.value.toString());
+  });
+  
+  $("#fun2NumSlider").slider().on("slide", function(slideEvt) {
+	cardioid.changeFun({ fun2: slideEvt.value });
+    $("#fun2NumLabel").text(slideEvt.value.toString());
+  });
+  
+  $("#numIterationsSlider").slider().on("slide", function(slideEvt) {
+	cardioid.changeNumInterations(slideEvt.value);
+    $("#numIterationsLabel").text(slideEvt.value.toString());
+  });
+  
+  $("#animate").on('click', function() {
+    cardioid.draw(
+    {
+      animNum: true,
+      animCard: true
+    });
+  });
+  
+  $("#mirror").on('click', function(evt) {
+    console.log($(this))
+    if($(this).attr('value') === 'true')
+    {
+      cardioid.setMirror(false);
+      $(this).attr('value', 'false');
+    }
+    else
+    {
+      cardioid.setMirror(true);
+      $(this).attr('value', 'true');
+    }
+  });
+  
+</script>

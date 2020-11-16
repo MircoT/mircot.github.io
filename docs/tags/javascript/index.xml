@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>javascript on My personal website</title>
+    <link>/tags/javascript/</link>
+    <description>Recent content in javascript on My personal website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 12 May 2016 00:00:00 +0000</lastBuildDate><atom:link href="/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Serve only some files by exension</title>
+      <link>/post/2016-05-12-nginxservefiles/</link>
+      <pubDate>Thu, 12 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2016-05-12-nginxservefiles/</guid>
+      <description>Often I manage websites that use bower as package manager and I don&amp;rsquo;t want to grant the access to all the packages installed, so I have to filter the file served by nginx.</description>
+    </item>
+    
+    <item>
+      <title>An emulator of Pdp8 written in Javascript</title>
+      <link>/post/2016-04-12-jspdp8/</link>
+      <pubDate>Tue, 12 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2016-04-12-jspdp8/</guid>
+      <description>I wrote a new emulator for Pdp8 in Javascript to make it more portable and here you can see the result.</description>
+    </item>
+    
+    <item>
+      <title>A cardioid from light reflection</title>
+      <link>/post/2015-10-16-cardioidjs/</link>
+      <pubDate>Fri, 16 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015-10-16-cardioidjs/</guid>
+      <description>This is a small experiment using HTML5 canvas and javascript. The module created allows you to plot a cardioid on a canvas starting from the reflection of a ray of light in a circumference.</description>
+    </item>
+    
+    <item>
+      <title>Behind the scenes with threejs</title>
+      <link>/post/2015-10-30-fourtriangles/</link>
+      <pubDate>Fri, 16 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015-10-30-fourtriangles/</guid>
+      <description>Here we have 4 polygons. The lonely one in the first row is a cube with 6 square faces.</description>
+    </item>
+    
+    <item>
+      <title>Unknown compiler option &#39;p&#39;</title>
+      <link>/post/2015-08-31-vscode-error-ts5023/</link>
+      <pubDate>Mon, 31 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015-08-31-vscode-error-ts5023/</guid>
+      <description>I was trying VS Code on windows, setting up a project with TypeScript when I received this error:</description>
+    </item>
+    
+  </channel>
+</rss>

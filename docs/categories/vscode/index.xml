@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VSCode on My personal website</title>
+    <link>/categories/vscode/</link>
+    <description>Recent content in VSCode on My personal website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 31 Aug 2015 00:00:00 +0000</lastBuildDate><atom:link href="/categories/vscode/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unknown compiler option &#39;p&#39;</title>
+      <link>/post/2015-08-31-vscode-error-ts5023/</link>
+      <pubDate>Mon, 31 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015-08-31-vscode-error-ts5023/</guid>
+      <description>I was trying VS Code on windows, setting up a project with TypeScript when I received this error:</description>
+    </item>
+    
+  </channel>
+</rss>

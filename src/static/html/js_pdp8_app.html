@@ -1,0 +1,157 @@
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="/js/jspdp8/bootstrap4/css/bootstrap.min.css">
+
+<!-- Tether CSS -->
+<link rel="stylesheet" href="/js/jspdp8/tether/css/tether.min.css">
+<link rel="stylesheet" href="/js/jspdp8/tether/css/tether-theme-basic.min.css">
+
+<!-- CodeMirror CSS -->
+<link rel="stylesheet" href="/js/jspdp8/codemirror/codemirror.css">
+<link rel="stylesheet" href="/js/jspdp8/codemirror/mdn-like.css">
+
+<!-- My Style -->
+<link rel="stylesheet" href="https://rawgit.com/MircoT/js-pdp8/master/app/css/style.css">
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <a class="navbar-brand" href="#">JS-PDP8</a>
+        </div>
+        <div class="col col-md-10">
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group btn-group-sm" role="group" aria-label="actions file">
+                    <label class="file btn">
+                        <input type="file" id="file_open" accept=".asm">
+                        <span class="file-open"></span>
+                    </label>
+                    <button type="button" class="btn btn-primary-outline" id="btn_save">Save</button>
+                </div>
+                <div class="btn-group btn-group-sm" role="group" aria-label="actions pdp8">
+                    <button type="button" class="btn btn-primary-outline" id="btn_compile">Compile</button>
+                    <button type="button" class="btn btn-primary-outline" id="btn_reset">Reset</button>
+                    <button type="button" class="btn btn-primary-outline" id="btn_start">Start</button>
+                    <button type="button" class="btn btn-primary-outline" id="btn_stop">Stop</button>
+                </div>
+                <div class="btn-group btn-group-sm" role="group" aria-label="actions executer">
+                    <button type="button" class="btn btn-primary-outline" id="btn_run">Run</button>
+                    <button type="button" class="btn btn-primary-outline" id="btn_step">Step</button>
+                    <button type="button" class="btn btn-primary-outline" id="btn_next">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-4">
+            <h5>Source</h5>
+            <div id="codeMirrorEditor"></div>
+        </div>
+        <div class="col-md-4">
+            <h5>Ram</h5>
+            <div id="codeMirrorViewer"></div>
+        </div>
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h5>Registers</h5>
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-7">
+                    <h6><span class="label label-info" id="PC">000000000000</span> PC</h6>
+                </div>
+                <div class="col-sm-5">
+                    <h6><span class="label label-opr-i" id="OPR">000</span> OPR</h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-7">
+                    <h6><span class="label label-warning" id="MAR">000000000000</span> MAR</h6>
+                </div>
+                <div class="col-sm-5">
+                    <h6><span class="label label-opr-i" id="I">0</span> I</h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-7">
+                    <h6><span class="label label-mbr" id="MBR">0000000000000000</span> MBR</h6>
+                </div>
+                <div class="col-sm-5">
+                    <h6><span class="label label-primary" id="AC_INT">0</span> AC (int)</h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-7">
+                    <h6><span class="label label-primary" id="E">0</span>-<span class="label label-primary" id="AC">0000000000000000</span> E-AC</h6>
+                </div>
+                <div class="col-sm-5">
+                    <h6><span class="label label-primary" id="AC_HEX">0</span> AC (hex)</h6>
+                </div>
+            </div>
+            <div class="row">
+                <hr>
+                <div class="col-sm-12">
+                    <h5>Control unit and status</h5>
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1">
+                    <h6><span class="label label-danger ctrl-unit-led" id="S">S</span></h6>
+                </div>
+                <div class="col-sm-1">
+                    <h6><span class="label label-success ctrl-unit-led" id="INT">INT</span></h6>
+                </div>
+                <div class="col-sm-3 col-sm-offset-4">
+                    <h6>Clock <span class="label label-clock ctrl-unit-led" id="clock">0</span></h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1">
+                    <h6>F <span class="label label-primary" id="F">0</span></h6>
+                </div>
+                <div class="col-sm-1">
+                    <h6>R <span class="label label-primary" id="R">0</span></h6>
+                </div>
+                <div class="col-sm-3 col-sm-offset-4">
+                    <h6><span class="label label-fetch" id="cycle">FETCH</span></h6>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-6">
+                    <h6>Last (sub)instruction executed:</h6>
+                </div>
+                <div class="col-sm-6">
+                    <h6><span class="label label-last-istr" id="last_istr">NOP</span></h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Source errors</h3>
+            <ul id="source_errors" class="list-group">
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <h3>Terminal</h3>
+            <textarea class="form-control terminal" id="terminal" rows="5" readonly></textarea>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery first, then tether and Bootstrap JS. -->
+<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+<script src="/js/jspdp8/tether/js/tether.min.js"></script>
+<script src="/js/jspdp8/bootstrap4/js/bootstrap.min.js"></script>
+
+<!-- CodeMirror -->
+<script src="/js/jspdp8/codemirror/codemirror.js"></script>
+<script src="https://rawgit.com/MircoT/js-pdp8/master/app/js/pdp8_lang.js"></script>
+
+<!-- Main App -->
+<script src="https://rawgit.com/MircoT/js-pdp8/master/lib/pdp8-compiled.min.js"></script>
+<script src="https://rawgit.com/MircoT/js-pdp8/master/app/js/app-compiled.min.js"></script>
