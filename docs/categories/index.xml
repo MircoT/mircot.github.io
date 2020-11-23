@@ -8,11 +8,38 @@
     <language>en</language>
     <lastBuildDate>Thu, 12 May 2016 00:00:00 +0000</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>devops</title>
+      <link>/categories/devops/</link>
+      <pubDate>Thu, 12 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>server</title>
       <link>/categories/server/</link>
       <pubDate>Thu, 12 May 2016 00:00:00 +0000</pubDate>
       
       <guid>/categories/server/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>shell</title>
+      <link>/categories/shell/</link>
+      <pubDate>Thu, 12 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/shell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>system</title>
+      <link>/categories/system/</link>
+      <pubDate>Thu, 12 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/system/</guid>
       <description></description>
     </item>
     

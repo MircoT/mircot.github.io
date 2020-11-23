@@ -26,6 +26,15 @@
     </item>
     
     <item>
+      <title>Oh-my-fish installation with ansible</title>
+      <link>/post/2020-11-23-oh-my-fish-with-ansible/</link>
+      <pubDate>Thu, 12 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020-11-23-oh-my-fish-with-ansible/</guid>
+      <description>The fish shell is a great alternative to bash that has a very interesting environment, rich as the most valuable alternatives like zsh.</description>
+    </item>
+    
+    <item>
       <title>Serve only some files by exension</title>
       <link>/post/2016-05-12-nginxservefiles/</link>
       <pubDate>Thu, 12 May 2016 00:00:00 +0000</pubDate>
