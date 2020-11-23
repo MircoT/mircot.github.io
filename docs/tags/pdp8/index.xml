@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pdp8 on My personal website</title>
+    <link>/tags/pdp8/</link>
+    <description>Recent content in pdp8 on My personal website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 12 Apr 2016 00:00:00 +0000</lastBuildDate><atom:link href="/tags/pdp8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>An emulator of Pdp8 written in Javascript</title>
+      <link>/post/2016-04-12-jspdp8/</link>
+      <pubDate>Tue, 12 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2016-04-12-jspdp8/</guid>
+      <description>I wrote a new emulator for Pdp8 in Javascript to make it more portable and here you can see the result.</description>
+    </item>
+    
+  </channel>
+</rss>

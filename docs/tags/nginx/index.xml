@@ -16,14 +16,5 @@
       <description>Often I manage websites that use bower as package manager and I don&amp;rsquo;t want to grant the access to all the packages installed, so I have to filter the file served by nginx.</description>
     </item>
     
-    <item>
-      <title>An emulator of Pdp8 written in Javascript</title>
-      <link>/post/2016-04-12-jspdp8/</link>
-      <pubDate>Tue, 12 Apr 2016 00:00:00 +0000</pubDate>
-      
-      <guid>/post/2016-04-12-jspdp8/</guid>
-      <description>I wrote a new emulator for Pdp8 in Javascript to make it more portable and here you can see the result.</description>
-    </item>
-    
   </channel>
 </rss>
